@@ -3,7 +3,7 @@ python-ezmlex
 
 Python package for lexical analysis of texts. This is another yet package for
 the tokenization of strings. It supports various types of inputs, UTF-8
-encoding and has conveniend iterator interface. 
+encoding and has convenient iterator interface. 
 
 
 FEATURES
