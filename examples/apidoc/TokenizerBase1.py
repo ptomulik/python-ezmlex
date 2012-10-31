@@ -1,6 +1,7 @@
 """`examples/apidoc/TokenizerBase1.py`
 
-TODO: Write docs for XXX
+Example usage of `ezmlex.tokenizers.TokenizerBase` class. Decompose text into
+words, punctuators and whitespaces. Report errors in input stream.
 """
 
 #
