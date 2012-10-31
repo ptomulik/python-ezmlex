@@ -103,8 +103,8 @@ class TokenizerBase(object):
     for example, one may replace each comment line with ``#``, each empty line
     with space and each non-empty and non-comment line with a letter. 
 
-    FSM character patterns must carefully designed such that any possible input
-    item matches at most one FSM character pattern. The null character
+    FSM character patterns must be carefully designed such that any possible
+    input item matches at most one FSM character pattern. The null character
     ``\\0`` in FSM string has special meaning. Each unrecognized item from
     input buffer (i.e. an item that doesn't match any of FSM char patterns)
     should be mapped to ``\\0`` in FSM string.
@@ -128,10 +128,13 @@ class TokenizerBase(object):
         Tokenizer.def_fsm_char_pattern('#', r'#[^\\n]*\\n') # comment line
         Tokenizer.def_fsm_char_pattern('L', r'[^#].*[^\\t ]+.*\\n') # other line
 
+    Note, than you may use helper patterns (described later) instead of
+    bare regular expressions.
+
     Once FSM character patterns are defined, an item obtained from buffer may
     be transformed to FSM character with `fsm_char()`. There is also
     `_make_fsm_str_by_patterns()` method which uses this function to 
-    map strings of buffer items into FSM strings via pattern matching. This
+    map sequence of buffer items to FSM string via pattern matching. This
     method may be assigned to buffer's ``_make_fsm_str`` attribute to delegate
     creation of FSM strings to the tokenizer and use pattern-based
     implementation as below
@@ -174,7 +177,7 @@ class TokenizerBase(object):
         Tokenizer.def_token_type('Integer', r'[+-]?\\d+')
         Tokenizer.def_token_type('Float', r'[+-]?\\d*(?:\\.\\d+)?')
 
-    Note, than you may use helper patterns (described below) instead of
+    Note, than you may use helper patterns (described later) instead of
     bare regular expressions.
 
 
