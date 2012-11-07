@@ -1264,7 +1264,7 @@ class Test_LineOrientedTokenizer__make_fsm_str(TestCase):
 #############################################################################
 
 if __name__ == "__main__":
-    ldr = TestLoader()
+    ldr = unittest.TestLoader()
     suite = unittest.TestSuite()
     # Load tests to test suite
     tclasses = [
@@ -1320,7 +1320,7 @@ if __name__ == "__main__":
     for tclass in tclasses:
         suite.addTests(ldr.loadTestsFromTestCase(tclass))
 
-    if not unittest.TextTestRunner(verbosity = 2).run(suite).wasSuccesful():
+    if not unittest.TextTestRunner(verbosity = 2).run(suite).wasSuccessful():
         sys.exit(1)
 
 # Local Variables:
