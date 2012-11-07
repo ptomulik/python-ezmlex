@@ -1267,57 +1267,61 @@ if __name__ == "__main__":
     ldr = TestLoader()
     suite = unittest.TestSuite()
     # Load tests to test suite
-    suite.addTests(ldr.loadTestsFromTestCase(Test_TokenizerBufferBase___init__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_TokenizerBufferBase_bind))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_TokenizerBufferBase_set_start_marker))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_TokenizerBufferBase_assign))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_TokenizerBufferBase_extend))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_TokenizerBufferBase_shift))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_TokenizerBufferBase_bookmarking_accessors))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_TokenizerBufferBase_abstract_methods))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer___init__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer_bind))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer_set_start_marker))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer_assign))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer_extend))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer_shift))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer_bookmarking))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedTokenizer_fsm_str))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer___str__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer___unicode__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer___len__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer___getitem__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer___iter__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedTokenizer__on_bind))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer__do_assign))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer__do_extend_by_string))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer__do_extend_by_read))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer__do_extend_by_iter))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_CharOrientedBuffer__update_end_marker))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer___init__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer_bind))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer_set_start_marker))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer_assign))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer_extend))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer_shift))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer_bookmarking))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedTokenizer_fsm_str))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer___str__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer___unicode__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer___len__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer___getitem__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer___setitem__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer___iter__))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedTokenizer__on_bind))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer__do_assign))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer__do_extend_by_string))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer__do_extend_by_iter))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedBuffer__update_end_marker))
-    suite.addTests(ldr.loadTestsFromTestCase(Test_LineOrientedTokenizer__make_fsm_str))
+    tclasses = [
+        Test_TokenizerBufferBase___init__,
+        Test_TokenizerBufferBase_bind,
+        Test_TokenizerBufferBase_set_start_marker,
+        Test_TokenizerBufferBase_assign,
+        Test_TokenizerBufferBase_extend,
+        Test_TokenizerBufferBase_shift,
+        Test_TokenizerBufferBase_bookmarking_accessors,
+        Test_TokenizerBufferBase_abstract_methods,
+        Test_CharOrientedBuffer___init__,
+        Test_CharOrientedBuffer_bind,
+        Test_CharOrientedBuffer_set_start_marker,
+        Test_CharOrientedBuffer_assign,
+        Test_CharOrientedBuffer_extend,
+        Test_CharOrientedBuffer_shift,
+        Test_CharOrientedBuffer_bookmarking,
+        Test_CharOrientedTokenizer_fsm_str,
+        Test_CharOrientedBuffer___str__,
+        Test_CharOrientedBuffer___unicode__,
+        Test_CharOrientedBuffer___len__,
+        Test_CharOrientedBuffer___getitem__,
+        Test_CharOrientedBuffer___iter__,
+        Test_CharOrientedTokenizer__on_bind,
+        Test_CharOrientedBuffer__do_assign,
+        Test_CharOrientedBuffer__do_extend_by_string,
+        Test_CharOrientedBuffer__do_extend_by_read,
+        Test_CharOrientedBuffer__do_extend_by_iter,
+        Test_CharOrientedBuffer__update_end_marker,
+        Test_LineOrientedBuffer___init__,
+        Test_LineOrientedBuffer_bind,
+        Test_LineOrientedBuffer_set_start_marker,
+        Test_LineOrientedBuffer_assign,
+        Test_LineOrientedBuffer_extend,
+        Test_LineOrientedBuffer_shift,
+        Test_LineOrientedBuffer_bookmarking,
+        Test_LineOrientedTokenizer_fsm_str,
+        Test_LineOrientedBuffer___str__,
+        Test_LineOrientedBuffer___unicode__,
+        Test_LineOrientedBuffer___len__,
+        Test_LineOrientedBuffer___getitem__,
+        Test_LineOrientedBuffer___setitem__,
+        Test_LineOrientedBuffer___iter__,
+        Test_LineOrientedTokenizer__on_bind,
+        Test_LineOrientedBuffer__do_assign,
+        Test_LineOrientedBuffer__do_extend_by_string,
+        Test_LineOrientedBuffer__do_extend_by_iter,
+        Test_LineOrientedBuffer__update_end_marker,
+        Test_LineOrientedTokenizer__make_fsm_str,
+    ]
 
-    # TODO: load any other tests here
+    for tclass in tclasses:
+        suite.addTests(ldr.loadTestsFromTestCase(tclass))
 
-    unittest.TextTestRunner(verbosity = 2).run(suite)
+    if not unittest.TextTestRunner(verbosity = 2).run(suite).wasSuccesful():
+        sys.exit(1)
 
 # Local Variables:
 # # tab-width:4
